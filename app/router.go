@@ -10,10 +10,10 @@ func NewRouter(userController controller.UserController) *httprouter.Router {
 	router := httprouter.New()
 
 	router.GET("/api/user", userController.FindAll)
-	router.GET("/api/user/:userId", userController.FindById)
+	router.GET("/api/user/:UserId", userController.FindById)
 	router.POST("/api/user", userController.Create)
-	router.PUT("/api/user/:userId", userController.Update)
-	router.DELETE("/api/user/:userId", userController.Delete)
+	router.PUT("/api/user/:UserId", userController.Update)
+	router.DELETE("/api/user/:UserId", userController.Delete)
 
 	router.PanicHandler = exception.ErrorHandler
 
