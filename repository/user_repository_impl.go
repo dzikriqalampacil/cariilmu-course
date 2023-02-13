@@ -41,7 +41,7 @@ func (repository *UserRepositoryImpl) Delete(ctx context.Context, tx *sql.Tx, Us
 }
 
 func (repository *UserRepositoryImpl) FindById(ctx context.Context, tx *sql.Tx, UserId int64) (domain.User, error) {
-	SQL := "SELECT (id, name, email, password) FROM users WHERE id = $1"
+	SQL := "SELECT id, name, email, password FROM users WHERE id = $1"
 	rows, err := tx.QueryContext(ctx, SQL, UserId)
 	helper.PanicIfError(err)
 	defer rows.Close()
@@ -57,7 +57,7 @@ func (repository *UserRepositoryImpl) FindById(ctx context.Context, tx *sql.Tx, 
 }
 
 func (repository *UserRepositoryImpl) FindAll(ctx context.Context, tx *sql.Tx) []domain.User {
-	SQL := "SELECT (id, name, email, password) FROM users"
+	SQL := "SELECT id, name, email, password FROM users"
 	rows, err := tx.QueryContext(ctx, SQL)
 	helper.PanicIfError(err)
 	defer rows.Close()
