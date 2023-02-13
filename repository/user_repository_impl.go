@@ -40,7 +40,7 @@ func (repository *UserRepositoryImpl) Delete(ctx context.Context, tx *sql.Tx, Us
 	helper.PanicIfError(err)
 }
 
-func (repository *UserRepositoryImpl) FindById(ctx context.Context, tx *sql.Tx, UserId int) (domain.User, error) {
+func (repository *UserRepositoryImpl) FindById(ctx context.Context, tx *sql.Tx, UserId int64) (domain.User, error) {
 	SQL := "SELECT (id, name, email, password) FROM users WHERE id = $1"
 	rows, err := tx.QueryContext(ctx, SQL, UserId)
 	helper.PanicIfError(err)
