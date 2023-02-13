@@ -16,16 +16,16 @@ import (
 )
 
 func main() {
-	errEnv := godotenv.Load("../.env")
+	errEnv := godotenv.Load(".env")
 	if errEnv != nil {
 		log.Fatalf("Some error occured. Err: %s", errEnv)
 	}
 
-	host := os.Getenv("host")
-	port := os.Getenv("port")
-	user := os.Getenv("user")
-	password := os.Getenv("password")
-	dbname := os.Getenv("dbname")
+	host := os.Getenv("DATABASE_HOST")
+	port := os.Getenv("DATABASE_PORT")
+	user := os.Getenv("DATABASE_USER")
+	password := os.Getenv("DATABASE_PASSWORD")
+	dbname := os.Getenv("DATABASE_NAME")
 	db := app.NewDB(host, port, user, password, dbname)
 
 	validate := validator.New()
